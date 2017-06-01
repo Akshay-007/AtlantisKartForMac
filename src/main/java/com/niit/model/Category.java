@@ -2,7 +2,9 @@ package com.niit.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,7 +16,7 @@ public class Category {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 private int cid;
 private String categoryDetails;
-@OneToMany(mappedBy="category")
+@OneToMany(mappedBy="category",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 private List<Product> products;
 public int getCid() {
 	return cid;

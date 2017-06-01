@@ -1,7 +1,9 @@
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@page isELIgnored="false" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ include file="header1.jsp" %>
+<%@ include file="header.jsp" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -17,10 +19,16 @@
 <link rel="stylesheet" href='../../../resources/theme1/css/basicstyle.css'>
 </head>
 <body>
+<img src="../../../resources/theme1/images/${product.id }.png">
 <table>
 <tr><th>PRODUCT NAME</th><th>Price</th><th>Manufacturer</th><th>Description</th></tr>
 <tr><td>${product.name }</td><td>${product.price }</td><td> ${product.manufacturer } <td>${product.description }</td></tr>
 </table>
+<url:url value="/user/cart/additem/${product.id }" var="urlty"></url:url>
+<a href="${urlty }">Add to Cart</a>
+
+<%-- <url:url value="/user/cart/${ }" var="urltyc"></url:url>
+<a href="${urltyc }">View Cart</a> --%>
 
 <url:url value="/all/product/productlist" var="url"></url:url>
 <a href="${url }">Browse All Products</a>

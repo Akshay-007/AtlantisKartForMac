@@ -40,40 +40,5 @@
 			<type>1</type>
 			<location>F:/Akshay/Downloads/JavaLogo.jpg</location>
 		</link>
-		<link>
-			<name>src/main/webapp/resources/theme1/css/basicstyle.css</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Users/nikshaya/Desktop/basicstyle.css</locationURI>
-		</link>
-		<link>
-			<name>src/main/webapp/resources/theme1/images/BlackJacket.jpg</name>
-			<type>1</type>
-			<location>F:/Akshay/Pictures/BlackJacket.jpg</location>
-		</link>
-		<link>
-			<name>src/main/webapp/resources/theme1/images/ChineseGirl.jpg</name>
-			<type>1</type>
-			<location>F:/Akshay/Pictures/ChineseGirl.jpg</location>
-		</link>
-		<link>
-			<name>src/main/webapp/resources/theme1/images/GreyWallpaper.jpg</name>
-			<type>1</type>
-			<location>F:/Akshay/Downloads/GreyWallpaper.jpg</location>
-		</link>
-		<link>
-			<name>src/main/webapp/resources/theme1/images/MacbookAir.jpg</name>
-			<type>1</type>
-			<location>F:/Akshay/Pictures/MacbookAir.jpg</location>
-		</link>
-		<link>
-			<name>src/main/webapp/resources/theme1/images/goodgrey.jpg</name>
-			<type>1</type>
-			<location>F:/Akshay/Downloads/goodgrey.jpg</location>
-		</link>
-		<link>
-			<name>src/main/webapp/resources/theme1/css/backgroundimages/goodgrey.jpg</name>
-			<type>1</type>
-			<location>F:/Akshay/Downloads/goodgrey.jpg</location>
-		</link>
 	</linkedResources>
 </projectDescription>

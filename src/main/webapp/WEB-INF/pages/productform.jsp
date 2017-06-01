@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="url" %>
-<%@ include file="header1.jsp" %>
+<%@ include file="header.jsp" %>
 
 
 <html>
@@ -91,12 +91,13 @@
 </table>
 <div class="form-group">
 <label for="category">Select Category</label>
-<c:forEach items="${categoryrecords }" var="c">
+<c:forEach items="${categoryList }" var="c">
  
 <form:radiobutton path="category.cid" value="${c.cid }"/>${c.categoryDetails }
 
 </c:forEach>
-<form:errors path="category" cssStyle="color:red"></form:errors>
+<form:errors path="category.cid" cssStyle="color:red"></form:errors> 
+<p class="myClass">${mssg }</p>
 </div>
 
 <div class="form-group">
@@ -104,7 +105,7 @@
 <input type="file" name="image" >
 </div>
 
-<input type="submit" value="Add Product">
+<input type="submit" value="Add/Edit Product">
 
 </form:form>
 

@@ -1,14 +1,21 @@
 package com.niit.model;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,9 +34,19 @@ private double price;
 private int unitInStock;
 	@NotEmpty(message="Description is mandatory")
 private String description;
-@ManyToOne
-@JoinColumn(name="cid")
+@NotNull(message="Category is mandatory")
+@ManyToOne(fetch=FetchType.EAGER)
+@JoinColumn(name="cid",nullable=false,updatable=false)
 private Category category;
+@OneToMany(mappedBy="product",cascade = CascadeType.ALL)
+@OnDelete(action = OnDeleteAction.CASCADE)
+private List<CartItem> cartItems;
+public List<CartItem> getCartItems() {
+	return cartItems;
+}
+public void setCartItems(List<CartItem> cartItems) {
+	this.cartItems = cartItems;
+}
 public MultipartFile getImage() {
 	return image;
 }

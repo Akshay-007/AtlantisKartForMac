@@ -1,6 +1,6 @@
 @CHARSET "ISO-8859-1";
 body {
-    background-image: url(backgroundimages/goodgrey.jpg); 
+    background-image: url(../images/goodgrey.jpg); 
    
 }
 
@@ -24,5 +24,21 @@ div.container-fluid{
 }
 div.form-group{
     width: 50%;
+}
+p.cap{
+	font-size: 40px;
+	font-weight: bold;
+	color:red;
+}
+caption {
+    text-align: left;
+     font-size: 30px;
+}
+h2{
+	margin-left: 7%
+}
+.myClass{
+	color:red;
+	font-size:20px;
 }
 
