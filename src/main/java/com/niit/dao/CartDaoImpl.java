@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.model.Cart;
 import com.niit.model.CartItem;
-import com.niit.model.Product;
+//import com.niit.model.Product;
 @Repository
 @Transactional
 public class CartDaoImpl implements CartDao {
@@ -41,11 +41,14 @@ public class CartDaoImpl implements CartDao {
 	}
 
 	public void removeAllCartItems(Cart cart) {
-		List<CartItem> cartItems = cart.getCartItems();
+		/*List<CartItem> cartItems = cart.getCartItems();
 		for (CartItem item : cartItems) {
 			removeCartItem(item);
-		}
-
+		}*/
+		String hql="delete from CartItem C where cartId='" + cart.getId() + "'";  
+        Session session=sessionFactory.openSession();
+        Query query=session.createQuery(hql);
+        query.executeUpdate(); 
 	}
 
 	public CartItem getCartItemByProductId(int id, int cartId) {
@@ -61,6 +64,7 @@ public class CartDaoImpl implements CartDao {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<CartItem> getAllCartItems(int cartId) {
 		Session session = sessionFactory.openSession();
 		Query query = session.createQuery("from CartItem where CARTID = '" + cartId + "' ORDER BY ID ASC");

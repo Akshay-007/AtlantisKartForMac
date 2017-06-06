@@ -7,6 +7,13 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>AtlantisKart Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  <repositories>
+  <repository> 
+    <id>spring-milestone</id>
+    <name>Spring Maven MILESTONE Repository</name>
+    <url>http://repo.springsource.org/libs-milestone</url>
+</repository>
+</repositories>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -96,7 +103,17 @@
         <artifactId>spring-security-taglibs</artifactId>
         <version>4.1.2.RELEASE</version>
         </dependency>
+        
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-test</artifactId>
+    <version>4.3.8.RELEASE</version>
+</dependency>
+
+        
   </dependencies>
+
   <build>
     <finalName>AtlantisKart</finalName>
   </build>

@@ -6,7 +6,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,13 +97,15 @@ public String saveProduct(@Valid @ModelAttribute(name="product") Product product
 }
 
 @RequestMapping("/all/product/productlist")
-public String getAllProducts(Model model)
+public String getAllProducts(Model model,HttpServletRequest request)
 {
 	List<Product> products=productService.getAllProducts();
 	model.addAttribute("products",products);
 	List<Category> categoryRecordss=categoryService.getAllCategories();
 	model.addAttribute("categoryList",categoryRecordss);
 	
+	if((SecurityContextHolder.getContext().getAuthentication().getPrincipal()!=null))
+			{
 	User activeUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 	if(activeUser!=null)
 	{
@@ -114,6 +118,7 @@ public String getAllProducts(Model model)
 		}
 	}
 	}
+			}
 	return "productlist";
 }
 @RequestMapping("/all/product/viewproduct/{id}")
@@ -130,7 +135,7 @@ public String deleteProduct(@PathVariable int id){
 	productService.deleteProduct(id);
 	return "redirect:/all/product/productlist";
 }
-@RequestMapping("/viewproductundercat/{id}")
+/*@RequestMapping("/viewproductundercat/{id}")
 public String productList(@PathVariable int id,Model model)
 {
 	List<Category> categoryRecordss=categoryService.getAllCategories();
@@ -139,7 +144,7 @@ public String productList(@PathVariable int id,Model model)
 	List<Product> products1=categoryService.getProductsByCategory(id);
 	model.addAttribute("products", products1);
 	return "home2";
-}
+}*/
 @RequestMapping("/all/product/productsByCategory")
 public String getProductsByCategory(@RequestParam(name="searchCondition") String searchCondition,
 		Model model,HttpSession session)

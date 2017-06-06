@@ -32,7 +32,7 @@
 </script>
 </head>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse bg-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">AtlantisKart</a>
@@ -40,7 +40,8 @@
     <ul class="nav navbar-nav">
     <url:url value="/home" var="xxx"></url:url>
       <li class=""><a href="${xxx}">Home</a></li>
-      <li><a href="#">About us</a></li>
+      <url:url value="/AboutUs" var="urlhy"></url:url>
+      <li><a href="${urlhy }">About us</a></li>
       <c:forEach items="${categoryList }" var="c2">
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href='#'>${c2.categoryDetails}<span class="caret"></span></a>
       <ul class="dropdown-menu">
@@ -51,8 +52,10 @@
       </ul>
       </li>
       </c:forEach>
+      <c:if test="${pageContext.request.userPrincipal.name!=null }">
       <url:url value="/all/product/productlist" var="url56"></url:url>
       <li class=""><a href="${url56 }">View All Products</a></li>
+      </c:if>
       <li class="dropdown">
 			<a href="" class="dropdown-toggle" data-toggle="dropdown">
                      Select by Category<b class="caret"></b></a>
@@ -73,7 +76,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
 <c:if test="${pageContext.request.userPrincipal.name!=null }">			
- <li><a href="">Welcome ${pageContext.request.userPrincipal.name }</a></li>
+ <li><a href="">Welcome ${pageContext.request.userPrincipal.name }!</a></li>
  </c:if>
   <url:url value="/all/registrationform" var="url"></url:url>
   
@@ -86,7 +89,7 @@
  </c:if>
  
  <c:if  test="${pageContext.request.userPrincipal.name!=null }">
-  <li><a href="<c:url value="/j_spring_security_logout"></c:url>">logout</a>
+  <li><a href="<c:url value="/j_spring_security_logout"></c:url>">Logout</a>
   </li>
   </c:if>
 </ul>

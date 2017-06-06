@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.niit.model.Authorities;
+import com.niit.model.BillingAddress;
 import com.niit.model.Cart;
 import com.niit.model.Customer;
+import com.niit.model.ShippingAddress;
 import com.niit.model.Users;
 @Repository
 public class CustomerDaoImpl implements CustomerDao {
@@ -30,17 +32,29 @@ public class CustomerDaoImpl implements CustomerDao {
 		cart.setCustomer(customer);
 		customer.setCart(cart);
 		session.save(customer);
+		//session.saveOrUpdate(customer);
 		session.flush();
 		transaction.commit();
 		session.close();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Customer> getCustomers() {
 		Session session=sessionFactory.openSession();
 		Query query=session.createQuery("from Customer");
 		List<Customer> customers=query.list();
 		session.close();
 		return customers;
+	}
+	
+	public void saveOrUpdateCustomer(Customer customer)
+	{
+		Session session=sessionFactory.openSession();
+		Transaction transaction=session.beginTransaction(); 
+		session.saveOrUpdate(customer);
+		session.flush();
+		transaction.commit();
+		session.close();
 	}
 
 }

@@ -1,6 +1,6 @@
 package com.niit.dao;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -15,6 +15,7 @@ import com.niit.model.Product;
 public class CategoryDaoImpl implements CategoryDao {
 	@Autowired
 private SessionFactory sessionFactory;
+	@SuppressWarnings("unchecked")
 	public List<Category> getAllCategories() {
 		Session session=sessionFactory.openSession();
 	    Query query=session.createQuery("from Category");
@@ -25,6 +26,7 @@ private SessionFactory sessionFactory;
 
 	
 
+	@SuppressWarnings("unchecked")
 	public List<Product> getProductsByCategory(int id)
 	{
 		String hql="from Product P where cid='" + id + "'";

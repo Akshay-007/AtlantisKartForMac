@@ -2,11 +2,14 @@ package com.niit.controllers;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +22,7 @@ import com.niit.model.CartItem;
 import com.niit.model.Category;
 import com.niit.model.Customer;
 import com.niit.model.Product;
+//import com.niit.model.Users;
 import com.niit.service.CategoryService;
 
 @Controller
@@ -32,6 +36,7 @@ private CustomerDao customerDao;
 @Autowired
 private CategoryService categoryService;
 
+@SuppressWarnings("unused")
 @RequestMapping(value="/user/cart/additem/{id}",method=RequestMethod.GET)
 public String addItem(@PathVariable int id, Model model)
 {
@@ -161,7 +166,7 @@ public String reduceQuantity(@PathVariable(value = "id") int id, @PathVariable(v
 public String updateCart(@PathVariable(value = "id") int id, @PathVariable(value = "cartId") int cartId,
 		Model model) {
 
-	CartItem cartItem = null;
+	//CartItem cartItem = null;
 	
 	double grandTotal = 0.0;
 	List<CartItem> cartItems=cartDao.getAllCartItems(cartId);
@@ -189,6 +194,26 @@ public String getNewUrl(@PathVariable (value = "cartId") int cartId, Model model
     model.addAttribute("cartList", cartDao.getAllCartItems(cartId));
     //model.addAttribute("cartId", cartId);
     return "mycart";
+}
+
+@RequestMapping("/user/cart/checkout/{cartId}")
+public String checkout(@PathVariable (value = "cartId") int cartId, Model model)
+{
+	List<Category> categoryRecordss=categoryService.getAllCategories();
+	model.addAttribute("categoryList",categoryRecordss);
+	Customer customer=cartDao.getCartById(cartId).getCustomer();
+	model.addAttribute("customere",customer);  
+	return "checkoutpage";
+}
+
+@RequestMapping("/page")
+public String success(@ModelAttribute(name="customere") Customer customere, BindingResult result, Model model)
+{
+	model.addAttribute("customere",customere);
+	Cart cart=customere.getCart();
+	customerDao.saveOrUpdateCustomer(customere);  
+	cartDao.removeAllCartItems(cart); 
+	return "successpage";
 }
 }
 			

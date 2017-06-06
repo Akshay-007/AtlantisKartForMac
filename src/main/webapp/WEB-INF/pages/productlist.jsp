@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%-- <%@ include file="header.jsp"%> --%>
 <%@ include file="header.jsp"%>
 <html>
 <head>
@@ -16,9 +17,9 @@
 <!-- Latest compiled JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>Browse items</title>
 
-<link rel="stylesheet" href='../../resources/theme1/css/newcss.css'>
+<link rel="stylesheet" href='../../resources/theme1/css/thirdcss.css'> 
 
 <script>
 	$(document).ready(function() {
@@ -33,10 +34,10 @@
 </script>
 </head>
 <body>
-
+<%-- <%@ include file="header.jsp"%> --%>
 	<div class="container">
 
-		<table class="table">
+		<table class="table table-condensed table-bordered">
 		<thead>
 			<tr>
 				<th>Photo</th>
@@ -69,8 +70,12 @@
 			</c:forEach>
 			</tbody>
 		</table>
+		<c:if test="${pageContext.request.userPrincipal.name!=null }">
+		<c:if test="${pageContext.request.userPrincipal.name!='admin' }">
 		<url:url value="/user/cart/view/${cus.id }" var="car"></url:url> 
-		<a href="${car}">View Cart</a> 
+		<a href="${car}"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp View Cart</a> 
+		</c:if>
+		</c:if>
 	</div>
 </body>
 </html>

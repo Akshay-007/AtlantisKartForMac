@@ -8,8 +8,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.niit.model.CartItem;
-import com.niit.model.Category;
+/*import com.niit.model.CartItem;
+import com.niit.model.Category;*/
 import com.niit.model.Product;
 @Repository
 public class ProductDaoImpl implements ProductDao {
@@ -25,6 +25,7 @@ public class ProductDaoImpl implements ProductDao {
 		session.close();
 
 	}
+	@SuppressWarnings("unchecked")
 	public List<Product> getAllProducts()
 	{
 		Session session=sessionFactory.openSession();

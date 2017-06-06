@@ -44,18 +44,18 @@
  </c:forEach>
 </c:forEach>
     <div class="item active">
-      <img src="resources/theme1/images/MacbookAir.jpg" alt=""/>
+      <img src="resources/theme1/images/homewall.jpg" alt=""/>
       <div class="carousel-caption">
-      <p class="cap">Macbook Air now available for $799</p>
+      <p class="cap"><-- Swipe right or left to view our Products --></p>
       </div>
     </div>
 
-    <div class="item">
+   <!--  <div class="item">
       <img src="resources/theme1/images/mensjacket.jpg" alt=""/>
       <div class="carousel-caption">
       <p class="cap">ASOS Lightweight Parka Jacket in Black</p>
       </div>
-    </div>
+    </div> -->
  
 
   <!-- Left and right controls -->

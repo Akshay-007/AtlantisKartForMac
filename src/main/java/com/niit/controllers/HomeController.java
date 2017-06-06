@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.niit.model.Category;
-import com.niit.model.Product;
 import com.niit.service.CategoryService;
 import com.niit.service.ProductService;
 
@@ -28,22 +27,28 @@ public class HomeController {
 		model.addAttribute("categoryList",categoryRecordss);
 		return "trialhome";
 	}
-	@RequestMapping("/Welcome")
-	public String goPage()
-	{
-		return "home1";
-	}
+
 	
 	@RequestMapping("/login")
 	public String login(@RequestParam(value="error",required=false) String error,
 			@RequestParam(value="logout",required=false) String logout,
 			Model model){
+		List<Category> categoryRecordss=catServ.getAllCategories();
+		model.addAttribute("categoryList",categoryRecordss);
 		if(error!=null)
-			model.addAttribute("error","Invalid Username and Password.. Please enter valid username and password");
+			model.addAttribute("error","Invalid Username or Password! Please enter valid Username and Password.");
 		if(logout!=null)
-			model.addAttribute("logout","Loggedout successfully");
+			model.addAttribute("logout","Logged out successfully");
 		return "login";
 		
+	}
+	
+	@RequestMapping("/AboutUs")
+	public String about(Model model)
+	{
+		List<Category> categoryRecordss=catServ.getAllCategories();
+		model.addAttribute("categoryList",categoryRecordss);
+		return "aboutus";
 	}
 
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.niit.model.Cart;
 import com.niit.model.CartItem;
-import com.niit.model.Product;
+//import com.niit.model.Product;
 
 public interface CartDao {
 	Cart getCartById (int cartId);

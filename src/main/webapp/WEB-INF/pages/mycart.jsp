@@ -5,7 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ include file="header.jsp"%>
+<%-- <%@ include file="header.jsp"%> --%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -17,17 +17,18 @@
 <!-- Latest compiled JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>${pageContext.request.userPrincipal.name }'s Cart</title>
+<link rel="stylesheet" href='../../../resources/theme1/css/cartcss.css'>
 </head>
 <body>
-
+<%@ include file="header.jsp"%>
 <c:if test="${empty cartList}">
 					<h3 align="center" style="color: #ff0000;">Your cart is empty</h3><br><br><br><br><br><br><br><br><br>
 					<c:url value="/all/product/productlist" var="vart1"></c:url>
 						<a href="${vart1 }">Continue Shopping</a> 
 					</c:if>
 					<c:if test="${!empty cartList}">
-						<table class="table table-bordered table-striped fs13">
+						<table class="table table-bordered fs13">
 							<thead align="center">
 								<tr>
 									<th>Image</th>
@@ -80,7 +81,10 @@
 							</tbody>
 						</table>
 						<c:url value="/all/product/productlist" var="vart"></c:url>
-						<a href="${vart }">Continue Shopping</a>  
+						<a href="${vart }"> <span class="glyphicon glyphicon-gift"></span>Continue Shopping &nbsp</a>  
+						<c:url value="/user/cart/checkout/${cartId}" var="varty"></c:url>
+						<a href="${varty}"><span class="glyphicon glyphicon-usd"></span>Checkout</a>
 					</c:if>
 </body>
 </html>
+<%@ include file="footer.jsp"%>
