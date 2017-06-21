@@ -31,7 +31,7 @@ public class CustomerController {
 	}
 	
 	@RequestMapping("/all/register")
-	public String registerCustomer(@Valid @ModelAttribute(name="customer") Customer customer,BindingResult result,Model model)
+	public String registerCustomer(@Valid @ModelAttribute(value="customer") Customer customer,BindingResult result,Model model)
 	{
 		if(result.hasErrors())
 			return "registrationpage";

@@ -24,7 +24,7 @@
         $('.dropdown-toggle').dropdown();
     });
 </script>
-<link rel="stylesheet" href='../../resources/theme1/css/styleone.css'>
+<link rel="stylesheet" href='../../resources/theme1/css/viewproductcss.css'>
 <title>Insert title here</title>
 
 </head>

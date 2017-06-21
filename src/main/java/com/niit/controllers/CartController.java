@@ -207,7 +207,7 @@ public String checkout(@PathVariable (value = "cartId") int cartId, Model model)
 }
 
 @RequestMapping("/page")
-public String success(@ModelAttribute(name="customere") Customer customere, BindingResult result, Model model)
+public String success(@ModelAttribute(value="customere") Customer customere, BindingResult result, Model model)
 {
 	model.addAttribute("customere",customere);
 	Cart cart=customere.getCart();

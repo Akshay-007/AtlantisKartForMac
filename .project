@@ -34,11 +34,4 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/main/webapp/WEB-INF/resources/images/JavaLogo.jpg</name>
-			<type>1</type>
-			<location>F:/Akshay/Downloads/JavaLogo.jpg</location>
-		</link>
-	</linkedResources>
 </projectDescription>

@@ -10,10 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.niit.model.Authorities;
-import com.niit.model.BillingAddress;
+//import com.niit.model.BillingAddress;
 import com.niit.model.Cart;
 import com.niit.model.Customer;
-import com.niit.model.ShippingAddress;
+//import com.niit.model.ShippingAddress;
 import com.niit.model.Users;
 @Repository
 public class CustomerDaoImpl implements CustomerDao {

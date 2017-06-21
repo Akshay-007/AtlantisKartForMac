@@ -6,8 +6,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+/*import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;*/
 
 import javax.validation.Valid;
 
@@ -67,7 +67,7 @@ public String editProduct(@PathVariable int id,Model model){
 
 	
 @RequestMapping("/admin/product/saveproduct")
-public String saveProduct(@Valid @ModelAttribute(name="product") Product product,BindingResult result,Model model){
+public String saveProduct(@Valid @ModelAttribute(value="product") Product product,BindingResult result,Model model){
 	if(result.hasErrors())
 	{
 		List<Category> categoryRecordss=categoryService.getAllCategories();
@@ -82,7 +82,7 @@ public String saveProduct(@Valid @ModelAttribute(name="product") Product product
 	MultipartFile image=product.getImage();
 	if(image!=null && !image.isEmpty()){
 	Path path=Paths.get
-("C:/Maven_workspace/AtlantisKart/src/main/webapp/resources/theme1/images/"+product.getId()+".png");
+("/Users/akshay/git/AtlantisKart/src/main/webapp/resources/theme1/images/"+product.getId()+".png");
 	try {
 		image.transferTo(new File(path.toString()));
 	} catch (IllegalStateException e) {
@@ -97,7 +97,7 @@ public String saveProduct(@Valid @ModelAttribute(name="product") Product product
 }
 
 @RequestMapping("/all/product/productlist")
-public String getAllProducts(Model model,HttpServletRequest request)
+public String getAllProducts(Model model/*,HttpServletRequest request*/)
 {
 	List<Product> products=productService.getAllProducts();
 	model.addAttribute("products",products);
@@ -147,9 +147,9 @@ public String productList(@PathVariable int id,Model model)
 }*/
 @RequestMapping("/all/product/productsByCategory")
 public String getProductsByCategory(@RequestParam(name="searchCondition") String searchCondition,
-		Model model,HttpSession session)
+		Model model/*HttpSession session*/)
 {
-	session.setAttribute("categoryList", categoryService.getAllCategories());
+	model.addAttribute("categoryList", categoryService.getAllCategories());
 	List<Product> products=productService.getAllProducts();
 	model.addAttribute("products",products);
 	model.addAttribute("searchCondition",searchCondition);

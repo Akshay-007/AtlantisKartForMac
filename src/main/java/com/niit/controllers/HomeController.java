@@ -2,7 +2,7 @@ package com.niit.controllers;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
+//import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ public class HomeController {
 	ProductService prodServ;
 	
 	@RequestMapping("/home")
-	public String goHomePage(HttpSession session, Model model)
+	public String goHomePage(/*HttpSession session,*/ Model model)
 	{
 		List<Category> categoryRecordss=catServ.getAllCategories();
 		model.addAttribute("categoryList",categoryRecordss);

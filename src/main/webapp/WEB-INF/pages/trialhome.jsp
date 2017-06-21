@@ -46,7 +46,7 @@
     <div class="item active">
       <img src="resources/theme1/images/homewall.jpg" alt=""/>
       <div class="carousel-caption">
-      <p class="cap"><-- Swipe right or left to view our Products --></p>
+      <p class="cap"><-- Swipe right or left to view our Products --> </p>
       </div>
     </div>
 
